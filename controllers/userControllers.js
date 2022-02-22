@@ -1,9 +1,8 @@
 //CONNECTIONS
-const User = require("../models/user")
+const User = require("../models/userModel")
 const bcrypt = require ("bcrypt")
 const auth = require("../auth")
-const user = require("../models/user")
-// const course = require("../models/course")
+const user = require("../models/userModel")
 
 
 module.exports.checkEmail = (body) => {
@@ -26,8 +25,7 @@ module.exports.register = (body) => {
 module.exports.register = (body) => {
 
     let newUser = new User ({
-         
-        userName: body.userName,
+
         email: body.email,
         password: bcrypt.hashSync(body.password,10)
 
@@ -71,7 +69,7 @@ module.exports.getProfile = (userId) =>{
 
 module.exports.enroll = async (userId, body) => {
     let userSaveStatus = await User.findById(userId).then(user => {
-        user.enrollments.push({courseId: body.courseId})
+        user.enrollments.push({productId: body.productId})
         return user.save().then((user, error) => {
             if (error){
                 return false;
@@ -81,11 +79,10 @@ module.exports.enroll = async (userId, body) => {
         })
     })
 
-    //the below process is almost exactly the same as above
-    let courseSaveStatus = await course.findById(body.courseId).then(course => {
-        course.enrollees.push({userId: userId})
+    let productSaveStatus = await product.findById(body.productId).then(product => {
+        product.enrollees.push({userId: userId})
 
-        return course.save().then((course, error) => {
+        return product.save().then((product, error) => {
             if(error){
                 return false;
             }else{
@@ -94,7 +91,7 @@ module.exports.enroll = async (userId, body) => {
         })
     })
 
-    if(userSaveStatus && courseSaveStatus){
+    if(userSaveStatus && productSaveStatus){
         return true;
     }else {
         return false;

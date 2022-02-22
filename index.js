@@ -3,7 +3,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 //import routes
-const userRoutes = require("./routes/user")
+const productRoutes = require("./routes/productRoutes")
+const userRoutes = require("./routes/userRoutes")
 
 
 //add the database connection
@@ -25,6 +26,7 @@ app.use(express.urlencoded({
 }))
 
 //add imported routed
+app.use("/products", productRoutes)
 app.use("/users", userRoutes)
 
 const port = 4000
