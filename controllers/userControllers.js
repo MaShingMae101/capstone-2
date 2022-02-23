@@ -41,6 +41,13 @@ module.exports.register = (body) => {
 }
 
 
+module.exports.allUsers = () => {
+    return User.find({}).then(result => {
+        return result;
+    })
+}
+
+
 
 module.exports.login = (body) => {
     return User.findOne({email: body.email}).then(result => {
