@@ -35,7 +35,7 @@ router.put("/:productId", auth.verify, (req, res) => {
 	}
 })
 
-router.delete("/:productId", auth.verify, (req, res) => {
+router.delete("/:productId/archive", auth.verify, (req, res) => {
 	if(auth.decode(req.headers.authorization).isAdmin){
 		productController.archiveProduct(req.params.productId).then(resultFromController => res.send(resultFromController))
 	}else{

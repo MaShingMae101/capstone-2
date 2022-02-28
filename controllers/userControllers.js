@@ -74,9 +74,9 @@ module.exports.getProfile = (userId) =>{
     })
 }
 
-module.exports.enroll = async (userId, body) => {
+module.exports.checkout = async (userId, body) => {
     let userSaveStatus = await User.findById(userId).then(user => {
-        user.enrollments.push({productId: body.productId})
+        user.orders.push({productId: body.productId})
         return user.save().then((user, error) => {
             if (error){
                 return false;

@@ -40,7 +40,7 @@ router.post("/login", (req,res) => {
 //route for checkout
 router.post("/checkout", auth.verify, (req, res) => {
     const userId = auth.decode(req.headers.authorization).id
-    userController.enroll(userId, req.body).then(resultFromController => res.send(resultFromController))
+    userController.checkout(userId, req.body).then(resultFromController => res.send(resultFromController))
 })
 
 
