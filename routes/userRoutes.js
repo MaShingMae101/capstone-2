@@ -43,6 +43,12 @@ router.post("/checkout", auth.verify, (req, res) => {
     userController.checkout(userId, req.body).then(resultFromController => res.send(resultFromController))
 })
 
+//get specific user
+router.get("/:userId/myOrders", (req, res) => {
+    userController.getSpecificUser(req.params.userId).then(resultFromController => res.send(resultFromController))
+
+})
+
 
 module.exports = router;
 

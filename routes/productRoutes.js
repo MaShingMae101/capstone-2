@@ -45,3 +45,23 @@ router.delete("/:productId/archive", auth.verify, (req, res) => {
 
 //export the router
 module.exports = router;
+
+
+// products:[{
+// 	productId: {
+// 		type: String,
+// 		required: true
+// 	},
+// 	quantity: {
+// 		type: Number,
+// 		required: true
+// 	},
+// 	totalAmount: {
+// 		type: Number,
+// 		required: true
+// 	},
+// 	purchasedOn: {
+// 		type: Date,
+// 		default: new Date()
+// 	}
+// }]
