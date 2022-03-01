@@ -29,6 +29,15 @@ app.use(express.urlencoded({
 app.use("/products", productRoutes)
 app.use("/users", userRoutes)
 
+
+// fetch('https://shing-mae-api.herokuapp.com/users/register',{
+//     method: 'POST',
+//     headers: {
+//         'Content-Type': 'application/json'
+//     }
+// })
+
+
 const port = 4000
 
 app.listen(process.env.PORT || port, () => {

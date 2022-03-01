@@ -77,12 +77,16 @@ module.exports.getProfile = (userId) =>{
 
 
 
-
-
 //CHECKOUT Module
 module.exports.checkout = async (userId, body) => {
     let userSaveStatus = await User.findById(userId).then(user => {
-        user.products.push({productId: body.productId, quantity: body.quantity, totalAmount: body.totalAmount})
+        user.products.push({
+                
+                     productId: body.productId,
+                     quantity: body.quantity,
+                     totalAmount: body.totalAmount
+
+        })
         return user.save().then((user) => {
             if (user){
                 return true;
