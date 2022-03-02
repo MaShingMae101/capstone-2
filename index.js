@@ -31,10 +31,10 @@ app.use("/users", userRoutes)
 
 
 // fetch('https://shing-mae-api.herokuapp.com/users/register',{
-//     method: 'POST',
-//     headers: {
-//         'Content-Type': 'application/json'
-//     }
+//      method: 'POST',
+//      headers: {
+//          'Content-Type': 'application/json'
+//      }
 // })
 
 
